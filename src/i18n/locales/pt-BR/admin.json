@@ -141,7 +141,8 @@
       "listSoftware": "Listar software",
       "manageSoftware": "Gerenciar software",
       "manageWinUpdates": "Gerenciar Atualizações do Windows",
-      "useFileBrowser": "Usar o Navegador de Arquivos"
+      "useFileBrowser": "Usar o Navegador de Arquivos",
+      "useQuickSupport": "Usar Suporte Rápido"
     }
   },
   "users": {

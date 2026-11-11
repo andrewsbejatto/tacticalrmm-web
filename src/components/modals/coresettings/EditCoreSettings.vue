@@ -24,6 +24,7 @@
           <q-tab name="apikeys" :label="$t('settings.core.tabs.apiKeys')" />
           <q-tab name="sso" :label="$t('settings.core.tabs.sso')" />
           <q-tab name="schedules" :label="$t('settings.core.tabs.schedules')" />
+          <q-tab name="quicksupport" :label="$t('quickSupport.title')" />
           <!-- <q-tab name="openai" label="Open AI" /> -->
         </q-tabs>
       </template>
@@ -853,6 +854,11 @@
                 <ScheduleTable />
               </q-tab-panel>
 
+              <!-- quick support -->
+              <q-tab-panel name="quicksupport">
+                <QuickSupportSettings />
+              </q-tab-panel>
+
               <!-- Open AI -->
               <!-- <q-tab-panel name="openai">
                 <div class="text-subtitle2">Open AI</div>
@@ -944,6 +950,7 @@ import APIKeysTable from "@/components/core/APIKeysTable.vue";
 import SSOProvidersTable from "@/ee/sso/components/SSOProvidersTable.vue";
 import TacticalDropdown from "@/components/ui/TacticalDropdown.vue";
 import ScheduleTable from "@/core/settings/components/ScheduleTable.vue";
+import QuickSupportSettings from "@/components/quicksupport/QuickSupportSettings.vue";
 
 export default {
   name: "EditCoreSettings",
@@ -956,6 +963,7 @@ export default {
     SSOProvidersTable,
     TacticalDropdown,
     ScheduleTable,
+    QuickSupportSettings,
   },
   mixins: [mixins],
   data() {

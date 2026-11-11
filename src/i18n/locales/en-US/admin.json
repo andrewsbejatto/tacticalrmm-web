@@ -141,7 +141,8 @@
       "listSoftware": "List Software",
       "manageSoftware": "Manage Software",
       "manageWinUpdates": "Manage Windows Updates",
-      "useFileBrowser": "Use File Browser"
+      "useFileBrowser": "Use File Browser",
+      "useQuickSupport": "Use Quick Support"
     }
   },
   "users": {

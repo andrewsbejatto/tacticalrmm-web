@@ -92,6 +92,17 @@
           checked-icon="nights_stay"
           unchecked-icon="wb_sunny"
         />
+        <!-- quick support -->
+        <q-btn
+          v-if="canUseQuickSupport"
+          dense
+          flat
+          icon="support_agent"
+          class="q-mr-sm"
+          @click="showQuickSupport"
+        >
+          <q-tooltip>{{ $t("quickSupport.title") }}</q-tooltip>
+        </q-btn>
         <!-- web terminal button -->
         <q-btn
           v-if="!hosted"
@@ -246,6 +257,7 @@ import { checkWebTermPerms, openWebTerminal } from "@/api/core";
 import AlertsIcon from "@/components/AlertsIcon.vue";
 import UserPreferences from "@/components/modals/coresettings/UserPreferences.vue";
 import ResetPass from "@/components/accounts/ResetPass.vue";
+import QuickSupportManager from "@/components/quicksupport/QuickSupportManager.vue";
 import { useI18n } from "vue-i18n";
 
 const store = useStore();
@@ -276,6 +288,7 @@ const currentTRMMVersion = computed(() => store.state.currentTRMMVersion);
 const latestTRMMVersion = computed(() => store.state.latestTRMMVersion);
 const needRefresh = computed(() => store.state.needrefresh);
 const hosted = computed(() => store.state.hosted);
+const canUseQuickSupport = computed(() => store.state.can_use_quick_support);
 const tokenExpired = computed(() => store.state.tokenExpired);
 const dash_warning_color = computed(() => store.state.dash_warning_color);
 const dash_negative_color = computed(() => store.state.dash_negative_color);
@@ -290,6 +303,12 @@ function showUserPreferences() {
   $q.dialog({
     component: UserPreferences,
   }).onOk(() => store.dispatch("getDashInfo"));
+}
+
+function showQuickSupport() {
+  $q.dialog({
+    component: QuickSupportManager,
+  });
 }
 
 function resetPassword() {

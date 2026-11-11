@@ -121,6 +121,10 @@
                 :label="$t('admin.roles.perms.useTerminal')"
               />
               <q-checkbox
+                v-model="localRole.can_use_quick_support"
+                :label="$t('admin.roles.perms.useQuickSupport')"
+              />
+              <q-checkbox
                 v-model="localRole.can_reboot_agents"
                 :label="$t('admin.roles.perms.rebootAgents')"
               />
@@ -523,6 +527,7 @@ export default {
           can_view_eventlogs: false,
           can_send_cmd: false,
           can_use_terminal: false,
+          can_use_quick_support: false,
           can_reboot_agents: false,
           can_install_agents: false,
           can_run_scripts: false,
