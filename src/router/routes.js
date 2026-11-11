@@ -49,6 +49,14 @@ const routes = [
     },
   },
   {
+    path: "/quicksupport/:code",
+    name: "QuickSupportControl",
+    component: () => import("@/views/QuickSupportControl.vue"),
+    meta: {
+      requireAuth: true,
+    },
+  },
+  {
     path: "/webvnc/:agent_id/:port",
     name: "VNC",
     component: () => import("@/views/WebVNC.vue"),

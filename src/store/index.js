@@ -2,6 +2,7 @@ import { createStore } from "vuex";
 import { Screen, Dark, LoadingBar } from "quasar";
 import axios from "axios";
 import { formatDate } from "@/utils/format";
+import { syncUserLocale } from "@/i18n";
 
 export default function () {
   const Store = new createStore({
@@ -43,6 +44,7 @@ export default function () {
         },
         server_scripts_enabled: true,
         web_terminal_enabled: true,
+        can_use_quick_support: false,
         sso_enabled: false,
         block_local_user_logon: false,
       };
@@ -161,6 +163,9 @@ export default function () {
       setWebTerminalEnabled(state, obj) {
         state.web_terminal_enabled = obj;
       },
+      setCanUseQuickSupport(state, obj) {
+        state.can_use_quick_support = obj;
+      },
       setSSOEnabled(state, obj) {
         state.sso_enabled = obj;
       },
@@ -253,10 +258,13 @@ export default function () {
         commit("setRunCmdPlaceholders", data.run_cmd_placeholder_text);
         commit("setServerScriptsEnabled", data.server_scripts_enabled);
         commit("setWebTerminalEnabled", data.web_terminal_enabled);
+        commit("setCanUseQuickSupport", !!data.can_use_quick_support);
         commit("setBlockLocalUserLogon", data.block_local_user_logon);
 
         if (data?.date_format !== "") commit("setDateFormat", data.date_format);
         else commit("setDateFormat", data.default_date_format);
+
+        syncUserLocale(data.language);
       },
       loadTree({ commit, state }) {
         setTimeout(() => {

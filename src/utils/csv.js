@@ -1,4 +1,5 @@
 import { exportFile, Notify } from "quasar";
+import { t } from "@/i18n";
 
 function _wrapCsvValue(val, formatFn) {
   let formatted = formatFn !== void 0 ? formatFn(val) : val;
@@ -40,7 +41,7 @@ export function exportTableToCSV(rows, columns) {
 
   if (status !== true) {
     Notify({
-      message: "Browser denied file download...",
+      message: t("utils.csv.downloadDenied"),
       color: "negative",
       icon: "warning",
     });

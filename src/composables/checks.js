@@ -6,6 +6,7 @@ import { formatCheckOptions } from "@/utils/format";
 import { fetchAgent } from "@/api/agents";
 import { isValidThreshold } from "@/utils/validation";
 import { notifySuccess } from "@/utils/notify";
+import { t } from "@/i18n";
 
 // for check add/edit modals
 // pass as an object {editCheck: props.check, initialState: {default form values for adding check} }
@@ -57,15 +58,18 @@ export function useCheckModal({ editCheck, initialState }) {
   const failOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   const severityOptions = [
-    { label: "Informational", value: "info" },
-    { label: "Warning", value: "warning" },
-    { label: "Error", value: "error" },
+    { label: t("checks.severity.info"), value: "info" },
+    { label: t("checks.severity.warning"), value: "warning" },
+    { label: t("checks.severity.error"), value: "error" },
   ];
 
   const logNameOptions = ["Application", "System", "Security"];
   const failWhenOptions = [
-    { label: "Log contains", value: "contains" },
-    { label: "Log does not contain", value: "not_contains" },
+    { label: t("checks.eventLog.logContains"), value: "contains" },
+    {
+      label: t("checks.eventLog.logNotContains"),
+      value: "not_contains",
+    },
   ];
 
   const diskOptions = ref(

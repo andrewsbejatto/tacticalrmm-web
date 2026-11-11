@@ -26,7 +26,7 @@
           :columns="tableColumns"
           :loading="loading"
           dense
-          no-data-label="Folder is Empty"
+          :no-data-label="$t('remoteBg.fileBrowser.folderEmpty')"
           binary-state-sort
           virtual-scroll
           selection="multiple"
@@ -89,6 +89,7 @@
 // composition imports
 import { ref, toRef, onMounted } from "vue";
 import { isDefined } from "@vueuse/core";
+import { useI18n } from "vue-i18n";
 
 // type imports
 import type { QTableColumn, QTreeLazyLoadParams, QTree, QTable } from "quasar";
@@ -126,6 +127,8 @@ defineExpose({
   reloadTable: reloadTable,
 });
 
+const { t } = useI18n();
+
 const fileSeparator = props.separator === "unix" ? "/" : "\\";
 const folderTree = ref<InstanceType<typeof QTree> | null>(null);
 const tableRef = ref<InstanceType<typeof QTable> | null>(null);
@@ -138,21 +141,21 @@ const tableRows = ref([] as FileSystemNodeTable[]);
 const tableColumns: QTableColumn[] = [
   {
     name: "name",
-    label: "Name",
+    label: t("common.name"),
     field: "name",
     align: "left",
     sortable: true,
   },
   {
     name: "type",
-    label: "Type",
+    label: t("common.type"),
     field: "type",
     align: "left",
     sortable: true,
   },
   {
     name: "size",
-    label: "Size",
+    label: t("remoteBg.fileBrowser.size"),
     field: "size",
     align: "left",
     sortable: true,
