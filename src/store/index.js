@@ -45,6 +45,7 @@ export default function () {
         server_scripts_enabled: true,
         web_terminal_enabled: true,
         can_use_quick_support: false,
+        can_view_recordings: false,
         sso_enabled: false,
         block_local_user_logon: false,
       };
@@ -166,6 +167,9 @@ export default function () {
       setCanUseQuickSupport(state, obj) {
         state.can_use_quick_support = obj;
       },
+      setCanViewRecordings(state, obj) {
+        state.can_view_recordings = obj;
+      },
       setSSOEnabled(state, obj) {
         state.sso_enabled = obj;
       },
@@ -259,6 +263,7 @@ export default function () {
         commit("setServerScriptsEnabled", data.server_scripts_enabled);
         commit("setWebTerminalEnabled", data.web_terminal_enabled);
         commit("setCanUseQuickSupport", !!data.can_use_quick_support);
+        commit("setCanViewRecordings", !!data.can_view_recordings);
         commit("setBlockLocalUserLogon", data.block_local_user_logon);
 
         if (data?.date_format !== "") commit("setDateFormat", data.date_format);

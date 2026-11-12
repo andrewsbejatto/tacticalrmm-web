@@ -103,6 +103,17 @@
         >
           <q-tooltip>{{ $t("quickSupport.title") }}</q-tooltip>
         </q-btn>
+        <!-- session recordings -->
+        <q-btn
+          v-if="canViewRecordings"
+          dense
+          flat
+          icon="video_library"
+          class="q-mr-sm"
+          @click="showRecordings"
+        >
+          <q-tooltip>{{ $t("recordings.title") }}</q-tooltip>
+        </q-btn>
         <!-- web terminal button -->
         <q-btn
           v-if="!hosted"
@@ -116,9 +127,9 @@
         <!-- Devices Chip -->
         <q-chip class="cursor-pointer">
           <q-avatar size="md" icon="devices" color="primary" />
-          <q-tooltip :delay="600" anchor="top middle" self="top middle"
-            >{{ $t("layout.agentCount") }}</q-tooltip
-          >
+          <q-tooltip :delay="600" anchor="top middle" self="top middle">{{
+            $t("layout.agentCount")
+          }}</q-tooltip>
           {{ serverCount + workstationCount }}
           <q-menu>
             <q-list dense>
@@ -149,7 +160,9 @@
                   }}</q-item-label>
                 </q-item-section>
               </q-item>
-              <q-item-label header>{{ $t("layout.workstations") }}</q-item-label>
+              <q-item-label header>{{
+                $t("layout.workstations")
+              }}</q-item-label>
               <q-item>
                 <q-item-section avatar>
                   <q-icon name="computer" size="sm" color="primary" />
@@ -209,7 +222,9 @@
                     v-close-popup
                   >
                     <q-item-section>
-                      <q-item-label>{{ $t("layout.resetPassword") }}</q-item-label>
+                      <q-item-label>{{
+                        $t("layout.resetPassword")
+                      }}</q-item-label>
                     </q-item-section>
                   </q-item>
                   <q-item clickable v-ripple @click="reset2FA" v-close-popup>
@@ -254,6 +269,7 @@ import AlertsIcon from "@/components/AlertsIcon.vue";
 import UserPreferences from "@/components/modals/coresettings/UserPreferences.vue";
 import ResetPass from "@/components/accounts/ResetPass.vue";
 import QuickSupportManager from "@/components/quicksupport/QuickSupportManager.vue";
+import RecordingsManager from "@/components/recordings/RecordingsManager.vue";
 import { useI18n } from "vue-i18n";
 
 const store = useStore();
@@ -285,6 +301,7 @@ const latestTRMMVersion = computed(() => store.state.latestTRMMVersion);
 const needRefresh = computed(() => store.state.needrefresh);
 const hosted = computed(() => store.state.hosted);
 const canUseQuickSupport = computed(() => store.state.can_use_quick_support);
+const canViewRecordings = computed(() => store.state.can_view_recordings);
 const tokenExpired = computed(() => store.state.tokenExpired);
 const dash_warning_color = computed(() => store.state.dash_warning_color);
 const dash_negative_color = computed(() => store.state.dash_negative_color);
@@ -304,6 +321,12 @@ function showUserPreferences() {
 function showQuickSupport() {
   $q.dialog({
     component: QuickSupportManager,
+  });
+}
+
+function showRecordings() {
+  $q.dialog({
+    component: RecordingsManager,
   });
 }
 

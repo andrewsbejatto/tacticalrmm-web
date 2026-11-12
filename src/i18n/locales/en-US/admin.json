@@ -143,6 +143,7 @@
       "manageWinUpdates": "Manage Windows Updates",
       "useQuickSupport": "Use Quick Support",
       "useRemoteAccess": "Use Remote Access (TRMM Desktop)",
+      "viewRecordings": "View session recordings",
       "useFileBrowser": "Use File Browser"
     }
   },

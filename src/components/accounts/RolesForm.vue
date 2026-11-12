@@ -19,7 +19,9 @@
         </q-card-section>
         <q-card-section class="scroll" style="height: 70vh">
           <!-- Permissions -->
-          <div class="text-subtitle2">{{ $t("admin.roles.sections.superUser") }}</div>
+          <div class="text-subtitle2">
+            {{ $t("admin.roles.sections.superUser") }}
+          </div>
           <q-separator />
           <q-card-section class="row">
             <div class="q-gutter-sm">
@@ -30,7 +32,9 @@
             </div>
           </q-card-section>
 
-          <div class="text-subtitle2">{{ $t("admin.roles.sections.reporting") }}</div>
+          <div class="text-subtitle2">
+            {{ $t("admin.roles.sections.reporting") }}
+          </div>
           <q-separator />
           <q-card-section class="row">
             <div class="q-gutter-sm">
@@ -45,7 +49,9 @@
             </div>
           </q-card-section>
 
-          <div class="text-subtitle2">{{ $t("admin.roles.sections.accounts") }}</div>
+          <div class="text-subtitle2">
+            {{ $t("admin.roles.sections.accounts") }}
+          </div>
           <q-separator />
           <q-card-section class="row">
             <div class="q-gutter-sm">
@@ -68,7 +74,9 @@
             </div>
           </q-card-section>
 
-          <div class="text-subtitle2">{{ $t("admin.roles.sections.agents") }}</div>
+          <div class="text-subtitle2">
+            {{ $t("admin.roles.sections.agents") }}
+          </div>
           <q-separator />
           <q-card-section class="row">
             <div class="q-gutter-sm">
@@ -121,6 +129,10 @@
                 :label="$t('admin.roles.perms.useRemoteAccess')"
               />
               <q-checkbox
+                v-model="localRole.can_view_recordings"
+                :label="$t('admin.roles.perms.viewRecordings')"
+              />
+              <q-checkbox
                 v-model="localRole.can_reboot_agents"
                 :label="$t('admin.roles.perms.rebootAgents')"
               />
@@ -154,7 +166,9 @@
               />
             </div>
           </q-card-section>
-          <div class="text-subtitle2">{{ $t("admin.roles.sections.core") }}</div>
+          <div class="text-subtitle2">
+            {{ $t("admin.roles.sections.core") }}
+          </div>
           <q-separator />
           <q-card-section class="row">
             <div class="q-gutter-sm">
@@ -226,7 +240,9 @@
             </div>
           </q-card-section>
 
-          <div class="text-subtitle2">{{ $t("admin.roles.sections.checks") }}</div>
+          <div class="text-subtitle2">
+            {{ $t("admin.roles.sections.checks") }}
+          </div>
           <q-separator />
           <q-card-section class="row">
             <div class="q-gutter-sm">
@@ -245,7 +261,9 @@
             </div>
           </q-card-section>
 
-          <div class="text-subtitle2">{{ $t("admin.roles.sections.clients") }}</div>
+          <div class="text-subtitle2">
+            {{ $t("admin.roles.sections.clients") }}
+          </div>
           <q-separator />
           <q-card-section class="row">
             <div class="q-gutter-sm">
@@ -303,7 +321,9 @@
             />
           </q-card-section>
 
-          <div class="text-subtitle2">{{ $t("admin.roles.sections.automationPolicies") }}</div>
+          <div class="text-subtitle2">
+            {{ $t("admin.roles.sections.automationPolicies") }}
+          </div>
           <q-separator />
           <q-card-section class="row">
             <div class="q-gutter-sm">
@@ -318,7 +338,9 @@
             </div>
           </q-card-section>
 
-          <div class="text-subtitle2">{{ $t("admin.roles.sections.tasks") }}</div>
+          <div class="text-subtitle2">
+            {{ $t("admin.roles.sections.tasks") }}
+          </div>
           <q-separator />
           <q-card-section class="row">
             <div class="q-gutter-sm">
@@ -337,7 +359,9 @@
             </div>
           </q-card-section>
 
-          <div class="text-subtitle2">{{ $t("admin.roles.sections.logs") }}</div>
+          <div class="text-subtitle2">
+            {{ $t("admin.roles.sections.logs") }}
+          </div>
           <q-separator />
           <q-card-section class="row">
             <div class="q-gutter-sm">
@@ -360,7 +384,9 @@
             </div>
           </q-card-section>
 
-          <div class="text-subtitle2">{{ $t("admin.roles.sections.scripts") }}</div>
+          <div class="text-subtitle2">
+            {{ $t("admin.roles.sections.scripts") }}
+          </div>
           <q-separator />
           <q-card-section class="row">
             <div class="q-gutter-sm">
@@ -380,7 +406,9 @@
             </div>
           </q-card-section>
 
-          <div class="text-subtitle2">{{ $t("admin.roles.sections.alerts") }}</div>
+          <div class="text-subtitle2">
+            {{ $t("admin.roles.sections.alerts") }}
+          </div>
           <q-separator />
           <q-card-section class="row">
             <div class="q-gutter-sm">
@@ -403,7 +431,9 @@
             </div>
           </q-card-section>
 
-          <div class="text-subtitle2">{{ $t("admin.roles.sections.windowsServices") }}</div>
+          <div class="text-subtitle2">
+            {{ $t("admin.roles.sections.windowsServices") }}
+          </div>
           <q-separator />
           <q-card-section class="row">
             <div class="q-gutter-sm">
@@ -414,7 +444,9 @@
             </div>
           </q-card-section>
 
-          <div class="text-subtitle2">{{ $t("admin.roles.sections.software") }}</div>
+          <div class="text-subtitle2">
+            {{ $t("admin.roles.sections.software") }}
+          </div>
           <q-separator />
           <q-card-section class="row">
             <div class="q-gutter-sm">
@@ -429,7 +461,9 @@
             </div>
           </q-card-section>
 
-          <div class="text-subtitle2">{{ $t("admin.roles.sections.windowsUpdates") }}</div>
+          <div class="text-subtitle2">
+            {{ $t("admin.roles.sections.windowsUpdates") }}
+          </div>
           <q-separator />
           <q-card-section class="row">
             <div class="q-gutter-sm">
@@ -503,6 +537,7 @@ export default {
           can_use_terminal: false,
           can_use_quick_support: false,
           can_use_remote_access: false,
+          can_view_recordings: false,
           can_reboot_agents: false,
           can_install_agents: false,
           can_run_scripts: false,

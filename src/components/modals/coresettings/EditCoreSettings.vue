@@ -4,18 +4,28 @@
       <template v-slot:before>
         <q-tabs dense v-model="tab" vertical class="text-primary">
           <q-tab name="general" :label="$t('settings.core.tabs.general')" />
-          <q-tab name="emailalerts" :label="$t('settings.core.tabs.emailAlerts')" />
+          <q-tab
+            name="emailalerts"
+            :label="$t('settings.core.tabs.emailAlerts')"
+          />
           <q-tab name="smsalerts" :label="$t('settings.core.tabs.smsAlerts')" />
           <q-tab name="meshcentral" label="MeshCentral" />
-          <q-tab name="customfields" :label="$t('settings.core.tabs.customFields')" />
+          <q-tab
+            name="customfields"
+            :label="$t('settings.core.tabs.customFields')"
+          />
           <q-tab name="keystore" :label="$t('settings.core.tabs.keyStore')" />
-          <q-tab name="urlactions" :label="$t('settings.core.tabs.urlActions')" />
+          <q-tab
+            name="urlactions"
+            :label="$t('settings.core.tabs.urlActions')"
+          />
           <q-tab name="webhooks" :label="$t('settings.core.tabs.webhooks')" />
           <q-tab name="retention" :label="$t('settings.core.tabs.retention')" />
           <q-tab name="apikeys" :label="$t('settings.core.tabs.apiKeys')" />
           <q-tab name="sso" :label="$t('settings.core.tabs.sso')" />
           <q-tab name="schedules" :label="$t('settings.core.tabs.schedules')" />
           <q-tab name="quicksupport" :label="$t('quickSupport.title')" />
+          <q-tab name="recordings" :label="$t('recordings.title')" />
           <!-- <q-tab name="openai" label="Open AI" /> -->
         </q-tabs>
       </template>
@@ -35,14 +45,18 @@
             >
               <!-- general -->
               <q-tab-panel name="general">
-                <div class="text-subtitle2">{{ $t("settings.core.tabs.general") }}</div>
+                <div class="text-subtitle2">
+                  {{ $t("settings.core.tabs.general") }}
+                </div>
                 <q-separator />
                 <q-card-section class="row">
                   <q-checkbox
                     v-model="settings.agent_auto_update"
                     :label="$t('settings.core.general.agentAutoUpdate')"
                   >
-                    <q-tooltip>{{ $t("settings.core.general.agentAutoUpdateTooltip") }}</q-tooltip>
+                    <q-tooltip>{{
+                      $t("settings.core.general.agentAutoUpdateTooltip")
+                    }}</q-tooltip>
                   </q-checkbox>
                 </q-card-section>
                 <q-card-section v-if="!hosted" class="row">
@@ -73,7 +87,9 @@
                     v-model="settings.enable_server_webterminal"
                     :label="$t('settings.core.general.webTerminal')"
                   >
-                    <q-tooltip>{{ $t("settings.core.general.webTerminalTooltip") }}</q-tooltip>
+                    <q-tooltip>{{
+                      $t("settings.core.general.webTerminalTooltip")
+                    }}</q-tooltip>
                   </q-checkbox>
                   <q-btn
                     size="sm"
@@ -90,7 +106,9 @@
                   </q-btn>
                 </q-card-section>
                 <q-card-section class="row">
-                  <div class="col-4">{{ $t("settings.core.general.defaultTimezone") }}</div>
+                  <div class="col-4">
+                    {{ $t("settings.core.general.defaultTimezone") }}
+                  </div>
                   <div class="col-2"></div>
                   <tactical-dropdown
                     filterable
@@ -103,7 +121,9 @@
                   />
                 </q-card-section>
                 <q-card-section class="row">
-                  <div class="col-4">{{ $t("settings.core.general.defaultDateFormat") }}</div>
+                  <div class="col-4">
+                    {{ $t("settings.core.general.defaultDateFormat") }}
+                  </div>
                   <div class="col-2"></div>
                   <q-input
                     outlined
@@ -132,7 +152,9 @@
                   </q-input>
                 </q-card-section>
                 <q-card-section class="row">
-                  <div class="col-4">{{ $t("settings.core.general.defaultServerPolicy") }}</div>
+                  <div class="col-4">
+                    {{ $t("settings.core.general.defaultServerPolicy") }}
+                  </div>
                   <div class="col-2"></div>
                   <q-select
                     clearable
@@ -147,7 +169,9 @@
                   />
                 </q-card-section>
                 <q-card-section class="row">
-                  <div class="col-4">{{ $t("settings.core.general.defaultWorkstationPolicy") }}</div>
+                  <div class="col-4">
+                    {{ $t("settings.core.general.defaultWorkstationPolicy") }}
+                  </div>
                   <div class="col-2"></div>
                   <q-select
                     clearable
@@ -162,7 +186,9 @@
                   />
                 </q-card-section>
                 <q-card-section class="row">
-                  <div class="col-4">{{ $t("settings.core.general.defaultAlertTemplate") }}</div>
+                  <div class="col-4">
+                    {{ $t("settings.core.general.defaultAlertTemplate") }}
+                  </div>
                   <div class="col-2"></div>
                   <q-select
                     clearable
@@ -195,7 +221,9 @@
                   />
                 </q-card-section>
                 <q-card-section class="row">
-                  <div class="col-4">{{ $t("settings.core.general.agentDebugLevel") }}</div>
+                  <div class="col-4">
+                    {{ $t("settings.core.general.agentDebugLevel") }}
+                  </div>
                   <div class="col-2"></div>
                   <q-select
                     emit-value
@@ -219,11 +247,16 @@
                     dense
                     v-model.number="settings.clear_faults_days"
                     class="col-6"
-                    :rules="[(val) => val >= 0 || $t('settings.core.general.minimumZero')]"
+                    :rules="[
+                      (val) =>
+                        val >= 0 || $t('settings.core.general.minimumZero'),
+                    ]"
                   />
                 </q-card-section>
                 <q-card-section class="row items-start content-between">
-                  <div class="col-6">{{ $t("settings.core.general.terminalExperience") }}</div>
+                  <div class="col-6">
+                    {{ $t("settings.core.general.terminalExperience") }}
+                  </div>
                   <div class="col-6">
                     <q-option-group
                       class="q-gutter-lg"
@@ -236,7 +269,9 @@
                   </div>
                 </q-card-section>
                 <q-card-section class="row items-start content-between">
-                  <div class="col-6">{{ $t("settings.core.general.fileBrowserExperience") }}</div>
+                  <div class="col-6">
+                    {{ $t("settings.core.general.fileBrowserExperience") }}
+                  </div>
                   <div class="col-6">
                     <q-option-group
                       class="q-gutter-lg"
@@ -249,7 +284,9 @@
                   </div>
                 </q-card-section>
                 <q-card-section class="row items-start content-between">
-                  <div class="col-6">{{ $t("settings.core.general.windowsDefaultTerminal") }}</div>
+                  <div class="col-6">
+                    {{ $t("settings.core.general.windowsDefaultTerminal") }}
+                  </div>
                   <div class="col-6">
                     <q-option-group
                       class="q-gutter-lg"
@@ -272,7 +309,8 @@
                         <span style="font-size: 1.2em">
                           {{
                             $t("settings.core.general.customShellPathExample", {
-                              example: "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+                              example:
+                                "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
                             })
                           }}
                         </span>
@@ -281,7 +319,9 @@
                   </div>
                 </q-card-section>
                 <q-card-section class="row items-start content-between">
-                  <div class="col-6">{{ $t("settings.core.general.linuxDefaultTerminal") }}</div>
+                  <div class="col-6">
+                    {{ $t("settings.core.general.linuxDefaultTerminal") }}
+                  </div>
                   <div class="col-6">
                     <q-option-group
                       class="q-gutter-lg"
@@ -306,7 +346,9 @@
                   </div>
                 </q-card-section>
                 <q-card-section class="row items-start content-between">
-                  <div class="col-6">{{ $t("settings.core.general.macosDefaultTerminal") }}</div>
+                  <div class="col-6">
+                    {{ $t("settings.core.general.macosDefaultTerminal") }}
+                  </div>
                   <div class="col-6">
                     <q-option-group
                       class="q-gutter-lg"
@@ -331,7 +373,9 @@
                   </div>
                 </q-card-section>
                 <q-card-section class="row">
-                  <div class="col-4">{{ $t("settings.core.general.resetPatchPolicy") }}</div>
+                  <div class="col-4">
+                    {{ $t("settings.core.general.resetPatchPolicy") }}
+                  </div>
                   <div class="col-2"></div>
                   <q-btn
                     color="negative"
@@ -384,27 +428,39 @@
                     </q-list>
                     <q-list v-else>
                       <q-item-section>
-                        <q-item-label>{{ $t("settings.core.noRecipients") }}</q-item-label>
+                        <q-item-label>{{
+                          $t("settings.core.noRecipients")
+                        }}</q-item-label>
                       </q-item-section>
                     </q-list>
                   </div>
                 </q-card-section>
                 <!-- smtp -->
-                <div class="text-subtitle2">{{ $t("settings.core.email.smtpSettings") }}</div>
+                <div class="text-subtitle2">
+                  {{ $t("settings.core.email.smtpSettings") }}
+                </div>
                 <q-separator />
                 <q-card-section class="row">
-                  <div class="col-2">{{ $t("settings.core.email.fromEmail") }}</div>
+                  <div class="col-2">
+                    {{ $t("settings.core.email.fromEmail") }}
+                  </div>
                   <div class="col-4"></div>
                   <q-input
                     outlined
                     dense
                     v-model="settings.smtp_from_email"
                     class="col-6 q-pa-none"
-                    :rules="[(val) => isValidEmail(val) || $t('settings.core.email.invalidEmail')]"
+                    :rules="[
+                      (val) =>
+                        isValidEmail(val) ||
+                        $t('settings.core.email.invalidEmail'),
+                    ]"
                   />
                 </q-card-section>
                 <q-card-section class="row">
-                  <div class="col-2">{{ $t("settings.core.email.fromName") }}</div>
+                  <div class="col-2">
+                    {{ $t("settings.core.email.fromName") }}
+                  </div>
                   <div class="col-4"></div>
                   <q-input
                     outlined
@@ -450,7 +506,9 @@
                   class="row"
                   v-show="settings.smtp_requires_auth"
                 >
-                  <div class="col-2">{{ $t("settings.core.usernameLabel") }}</div>
+                  <div class="col-2">
+                    {{ $t("settings.core.usernameLabel") }}
+                  </div>
                   <div class="col-4"></div>
                   <q-input
                     outlined
@@ -463,7 +521,9 @@
                   class="row"
                   v-show="settings.smtp_requires_auth"
                 >
-                  <div class="col-2">{{ $t("settings.core.passwordLabel") }}</div>
+                  <div class="col-2">
+                    {{ $t("settings.core.passwordLabel") }}
+                  </div>
                   <div class="col-4"></div>
                   <q-input
                     outlined
@@ -524,16 +584,22 @@
                     </q-list>
                     <q-list v-else>
                       <q-item-section>
-                        <q-item-label>{{ $t("settings.core.noRecipients") }}</q-item-label>
+                        <q-item-label>{{
+                          $t("settings.core.noRecipients")
+                        }}</q-item-label>
                       </q-item-section>
                     </q-list>
                   </div>
                 </q-card-section>
                 <!-- smtp -->
-                <div class="text-subtitle2">{{ $t("settings.core.sms.twilioSettings") }}</div>
+                <div class="text-subtitle2">
+                  {{ $t("settings.core.sms.twilioSettings") }}
+                </div>
                 <q-separator />
                 <q-card-section class="row">
-                  <div class="col-3">{{ $t("settings.core.sms.twilioNumber") }}</div>
+                  <div class="col-3">
+                    {{ $t("settings.core.sms.twilioNumber") }}
+                  </div>
                   <div class="col-3"></div>
                   <q-input
                     outlined
@@ -544,7 +610,9 @@
                   />
                 </q-card-section>
                 <q-card-section class="row">
-                  <div class="col-3">{{ $t("settings.core.sms.twilioAccountSid") }}</div>
+                  <div class="col-3">
+                    {{ $t("settings.core.sms.twilioAccountSid") }}
+                  </div>
                   <div class="col-3"></div>
                   <q-input
                     outlined
@@ -554,7 +622,9 @@
                   />
                 </q-card-section>
                 <q-card-section class="row">
-                  <div class="col-3">{{ $t("settings.core.sms.twilioAuthToken") }}</div>
+                  <div class="col-3">
+                    {{ $t("settings.core.sms.twilioAuthToken") }}
+                  </div>
                   <div class="col-3"></div>
                   <q-input
                     outlined
@@ -566,10 +636,14 @@
               </q-tab-panel>
               <!-- meshcentral -->
               <q-tab-panel name="meshcentral">
-                <div class="text-subtitle2">{{ $t("settings.core.mesh.title") }}</div>
+                <div class="text-subtitle2">
+                  {{ $t("settings.core.mesh.title") }}
+                </div>
                 <q-separator />
                 <q-card-section class="row" v-if="!hosted">
-                  <div class="col-4">{{ $t("settings.core.usernameLabel") }}</div>
+                  <div class="col-4">
+                    {{ $t("settings.core.usernameLabel") }}
+                  </div>
                   <div class="col-2"></div>
                   <q-input
                     dense
@@ -605,7 +679,9 @@
                   />
                 </q-card-section>
                 <q-card-section class="row" v-if="!hosted">
-                  <div class="col-4">{{ $t("settings.core.mesh.deviceGroup") }}</div>
+                  <div class="col-4">
+                    {{ $t("settings.core.mesh.deviceGroup") }}
+                  </div>
                   <div class="col-2"></div>
                   <q-input
                     dense
@@ -686,7 +762,9 @@
               <!-- retention -->
               <q-tab-panel name="retention">
                 <q-card-section class="row">
-                  <div class="col-4">{{ $t("settings.core.retention.checkHistory") }}</div>
+                  <div class="col-4">
+                    {{ $t("settings.core.retention.checkHistory") }}
+                  </div>
                   <div class="col-2"></div>
                   <q-input
                     dense
@@ -697,7 +775,9 @@
                   />
                 </q-card-section>
                 <q-card-section class="row">
-                  <div class="col-4">{{ $t("settings.core.retention.resolvedAlerts") }}</div>
+                  <div class="col-4">
+                    {{ $t("settings.core.retention.resolvedAlerts") }}
+                  </div>
                   <div class="col-2"></div>
                   <q-input
                     dense
@@ -708,7 +788,9 @@
                   />
                 </q-card-section>
                 <q-card-section class="row">
-                  <div class="col-4">{{ $t("settings.core.retention.agentHistory") }}</div>
+                  <div class="col-4">
+                    {{ $t("settings.core.retention.agentHistory") }}
+                  </div>
                   <div class="col-2"></div>
                   <q-input
                     dense
@@ -719,7 +801,9 @@
                   />
                 </q-card-section>
                 <q-card-section class="row">
-                  <div class="col-4">{{ $t("settings.core.retention.debugLogs") }}</div>
+                  <div class="col-4">
+                    {{ $t("settings.core.retention.debugLogs") }}
+                  </div>
                   <div class="col-2"></div>
                   <q-input
                     dense
@@ -730,7 +814,9 @@
                   />
                 </q-card-section>
                 <q-card-section class="row">
-                  <div class="col-4">{{ $t("settings.core.retention.auditLogs") }}</div>
+                  <div class="col-4">
+                    {{ $t("settings.core.retention.auditLogs") }}
+                  </div>
                   <div class="col-2"></div>
                   <q-input
                     dense
@@ -741,7 +827,9 @@
                   />
                 </q-card-section>
                 <q-card-section class="row">
-                  <div class="col-4">{{ $t("settings.core.retention.reportHistory") }}</div>
+                  <div class="col-4">
+                    {{ $t("settings.core.retention.reportHistory") }}
+                  </div>
                   <div class="col-2"></div>
                   <q-input
                     dense
@@ -770,6 +858,11 @@
               <!-- quick support -->
               <q-tab-panel name="quicksupport">
                 <QuickSupportSettings />
+              </q-tab-panel>
+
+              <!-- session recordings -->
+              <q-tab-panel name="recordings">
+                <RecordingSettings />
               </q-tab-panel>
 
               <!-- Open AI -->
@@ -864,6 +957,7 @@ import SSOProvidersTable from "@/ee/sso/components/SSOProvidersTable.vue";
 import TacticalDropdown from "@/components/ui/TacticalDropdown.vue";
 import ScheduleTable from "@/core/settings/components/ScheduleTable.vue";
 import QuickSupportSettings from "@/components/quicksupport/QuickSupportSettings.vue";
+import RecordingSettings from "@/components/recordings/RecordingSettings.vue";
 
 export default {
   name: "EditCoreSettings",
@@ -877,6 +971,7 @@ export default {
     TacticalDropdown,
     ScheduleTable,
     QuickSupportSettings,
+    RecordingSettings,
   },
   mixins: [mixins],
   data() {
@@ -903,7 +998,10 @@ export default {
         { label: this.$t("settings.core.logLevels.info"), value: "info" },
         { label: this.$t("settings.core.logLevels.warning"), value: "warning" },
         { label: this.$t("settings.core.logLevels.error"), value: "error" },
-        { label: this.$t("settings.core.logLevels.critical"), value: "critical" },
+        {
+          label: this.$t("settings.core.logLevels.critical"),
+          value: "critical",
+        },
       ],
     };
   },
@@ -913,14 +1011,26 @@ export default {
     },
     terminalModeOptions() {
       return [
-        { label: this.$t("settings.core.general.useNewTerminal"), value: "new" },
-        { label: this.$t("settings.core.general.useLegacyTerminal"), value: "legacy" },
+        {
+          label: this.$t("settings.core.general.useNewTerminal"),
+          value: "new",
+        },
+        {
+          label: this.$t("settings.core.general.useLegacyTerminal"),
+          value: "legacy",
+        },
       ];
     },
     fileBrowserModeOptions() {
       return [
-        { label: this.$t("settings.core.general.useNewFileBrowser"), value: "new" },
-        { label: this.$t("settings.core.general.useLegacyFileBrowser"), value: "legacy" },
+        {
+          label: this.$t("settings.core.general.useNewFileBrowser"),
+          value: "new",
+        },
+        {
+          label: this.$t("settings.core.general.useLegacyFileBrowser"),
+          value: "legacy",
+        },
       ];
     },
     windowsShellOptions() {
@@ -1055,7 +1165,9 @@ export default {
         .then(() => {
           this.$q.loading.hide();
           if (this.emailTest) {
-            this.$q.loading.show({ message: this.$t("settings.core.email.sendingTest") });
+            this.$q.loading.show({
+              message: this.$t("settings.core.email.sendingTest"),
+            });
             this.$axios
               .post("/core/emailtest/")
               .then((r) => {
@@ -1069,7 +1181,9 @@ export default {
                 this.$q.loading.hide();
               });
           } else if (this.smsTest) {
-            this.$q.loading.show({ message: this.$t("settings.core.sms.sendingTest") });
+            this.$q.loading.show({
+              message: this.$t("settings.core.sms.sendingTest"),
+            });
             this.$axios
               .post("/core/smstest/")
               .then((r) => {

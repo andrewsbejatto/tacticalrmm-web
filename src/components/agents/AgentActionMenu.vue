@@ -48,6 +48,20 @@
       <q-item-section>VNC</q-item-section>
     </q-item>
 
+    <!-- session recordings -->
+    <q-item
+      v-if="canViewRecordings"
+      clickable
+      v-ripple
+      v-close-popup
+      @click="showRecordings(agent)"
+    >
+      <q-item-section side>
+        <q-icon size="xs" name="video_library" />
+      </q-item-section>
+      <q-item-section>{{ $t("recordings.title") }}</q-item-section>
+    </q-item>
+
     <q-item clickable v-ripple :disable="urlActions.length === 0">
       <q-item-section side>
         <q-icon size="xs" name="open_in_new" />
@@ -281,7 +295,7 @@
 
 <script>
 // composition imports
-import { ref, inject, onMounted } from "vue";
+import { ref, computed, inject, onMounted } from "vue";
 import { useStore } from "vuex";
 import { useQuasar } from "quasar";
 import { useI18n } from "vue-i18n";
@@ -312,6 +326,7 @@ import SendCommand from "@/components/modals/agents/SendCommand.vue";
 import RunScript from "@/components/modals/agents/RunScript.vue";
 import IntegrationsContextMenu from "@/components/ui/IntegrationsContextMenu.vue";
 import ConfirmYesDialog from "@/components/agents/ConfirmYesDialog.vue";
+import RecordingsManager from "@/components/recordings/RecordingsManager.vue";
 
 export default {
   name: "AgentActionMenu",
@@ -333,6 +348,14 @@ export default {
 
     const urlActions = ref([]);
     const favoriteScripts = ref([]);
+    const canViewRecordings = computed(() => store.state.can_view_recordings);
+
+    function showRecordings(agent) {
+      $q.dialog({
+        component: RecordingsManager,
+        componentProps: { agentId: agent.agent_id, hostname: agent.hostname },
+      });
+    }
 
     function showEditAgent(agent_id) {
       $q.dialog({
@@ -626,8 +649,10 @@ export default {
       // reactive data
       urlActions,
       favoriteScripts,
+      canViewRecordings,
 
       // methods
+      showRecordings,
       showEditAgent,
       showPendingActionsModal,
       runTakeControl,
